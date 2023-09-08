@@ -7,8 +7,6 @@ const Layout : FC<PropsWithChildren> = ({children}) => {
   
   const state = useTodosSelector()
 
-  console.log(state)
-
   return <div className={styles.layout}>{children}</div>
 }
 
