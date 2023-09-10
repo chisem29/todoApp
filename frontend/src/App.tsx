@@ -1,4 +1,3 @@
-import { useTheme } from "@mui/material";
 
 import ProviderTodo from "./providers/ProviderTodo";
 import Layout from "./components/layout/Layout";
@@ -6,16 +5,15 @@ import Layout from "./components/layout/Layout";
 import store from "./store"
 
 import "./App.less";
+import Main from "./components/layout/main/Main";
 
 const App = () => {
-
-  const  { palette : {mode}} = useTheme();
   
   return (
     <>
       <ProviderTodo store={store}>
         <Layout>
-          <h1>{mode}</h1>
+          <Main />
         </Layout>
       </ProviderTodo>
     </>
