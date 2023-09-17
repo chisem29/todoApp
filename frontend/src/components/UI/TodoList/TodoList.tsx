@@ -17,9 +17,7 @@ const TodoList: FC = () => {
   const handlerDelete = useHandlerDeleteTask(dispatch);
   const handlerToogleTask = useHandlerToogleTask(dispatch);
 
-  const isLessThanTabletSize = useMediaQuery("(max-width:768px)");
-
-  const { indexVisible, handlerVisibleInner } = useVisibleInner();
+  const { indexVisible, handlerVisibleInner } = useVisibleInner(-1);
 
   return (
     <ul className={styles.listTasks}>
@@ -54,7 +52,7 @@ const TodoList: FC = () => {
             <p>{description}</p>
           </div>
           <button onClick={handlerDelete({ name })}>
-            Del {!isLessThanTabletSize ? <>Task</> : ""}
+            <img src="https://img.icons8.com/?size=1x&id=68064&format=png" />
           </button>
         </li>
       ))}
