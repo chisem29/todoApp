@@ -1,0 +1,102 @@
+@import (less) "../../../index.less";
+
+.addBtn {
+  flex-basis: min(200px, 80%);
+  border-radius: 10px;
+  font-size: 1rem;
+  height: 40px;
+  transition: all 0.3s ease-in;
+  background-color: @purple-color;
+}
+
+.clearBtn:extend(.addBtn) {
+  background: transparent;
+  box-shadow: 0px 0px 5px 1px #00000025;
+  color: #797979;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: #881106;
+    box-shadow: none;
+    &:not(:disabled) {
+      color: #fff;
+    }
+  }
+}
+
+.main {
+  padding: 8px clamp(15px, 2%, 20px);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.controlTodos {
+  position: relative;
+  z-index: 1;
+  bottom: max(-20%, -50px);
+  border-radius: 6px;
+  background-color: rgb(240, 240, 240);
+  padding: 16px min(5%, 35px);
+  box-shadow: 0px 0px 15px 10px #00000010;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  & input,
+  textarea {
+    position: relative;
+    padding: 5px 0;
+    color: #303030;
+    font-size: 1rem;
+    font-family: "Noto Sans Sogdian", sans-serif;
+    background-color: #00000000;
+    min-width: 100%;
+    width: 100%;
+    max-width: 100%;
+    &::placeholder {
+      color: #a8a8a8;
+      font-size: 1.25rem;
+    }
+    &:is(textarea) {
+      min-height: 150px;
+      max-height: 150px;
+      overflow-y: scroll;
+      &::-webkit-scrollbar-track {
+        background: transparent;
+      }
+    }
+    &:focus ~ span {
+      width: 100%;
+    }
+    &:invalid ~ span {
+      background-color: #ddddddad;
+    }
+  }
+  justify-content: center;
+}
+
+.btnGroup {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.groupControl {
+  position: relative;
+  width: 60%;
+  span {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 0;
+    height: 2px;
+    background-color: @purple-color;
+    transition: all 0.5s ease-in-out;
+  }
+}
+
+@media @desctop-media {
+  .groupControl {
+    width: 90%;
+  }
+}

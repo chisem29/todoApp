@@ -1,23 +1,29 @@
+import { Divider } from "@mui/material";
+
+import store from "./store";
 
 import ProviderTodo from "./providers/ProviderTodo";
 import Layout from "./components/layout/Layout";
-
-import store from "./store"
+import Main from "./components/layout/main/Main";
+import Header from "./components/layout/header/Header";
+import TodoList from "./components/UI/TodoList/TodoList";
 
 import "./App.less";
-import Main from "./components/layout/main/Main";
 
 const App = () => {
-  
   return (
     <>
       <ProviderTodo store={store}>
         <Layout>
-          <Main />
+          <Header />
+          <Divider />
+          <Main>
+            <TodoList />
+          </Main>
         </Layout>
       </ProviderTodo>
     </>
   );
-}
+};
 
 export default App;

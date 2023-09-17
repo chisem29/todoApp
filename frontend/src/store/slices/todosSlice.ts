@@ -6,10 +6,11 @@ import todosInitState from "../initStates/todosInitState";
 import todoReducers from "../reducers/todosReducers";
 
 const todosSlice = createSlice({
-  name : "todos",
-  initialState : todosInitState as stateTodosT,
-  reducers : todoReducers
-})
+  name: "todos",
+  initialState: todosInitState as stateTodosT,
+  reducers: todoReducers,
+});
 
-export default todosSlice.reducer
-export const { addTask } = todosSlice.actions
+export default todosSlice.reducer;
+export const { addTask, deleteTask, clearAll, toogleCompleteTask } =
+  todosSlice.actions;

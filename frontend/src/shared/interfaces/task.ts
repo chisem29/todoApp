@@ -1,5 +1,7 @@
 interface taskI {
-  desciption: string;
+  name: string;
+  description: string;
+  complete: boolean
 }
 
 export default taskI;
