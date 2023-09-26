@@ -12,5 +12,5 @@ const todosSlice = createSlice({
 });
 
 export default todosSlice.reducer;
-export const { addTask, deleteTask, clearAll, toogleCompleteTask } =
+export const { addTask, deleteTask, clearAll, toogleCompleteTask, correctTask } =
   todosSlice.actions;

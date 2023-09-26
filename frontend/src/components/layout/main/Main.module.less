@@ -1,5 +1,27 @@
 @import (less) "../../../index.less";
 
+.btnFillMixin(@bg) {
+  &::after {
+    position: absolute;
+    content: "";
+    z-index: -1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    transform: scaleY(0);
+    transform-origin: bottom;
+    background: @bg;
+    transition: all 0.3s ease;
+    border-radius: inherit;
+  }
+  &:hover {
+    &::after {
+      transform: scaleY(1);
+    }
+  }
+}
+
 .addBtn {
   flex-basis: min(200px, 80%);
   border-radius: 10px;
@@ -15,29 +37,13 @@
   color: #797979;
   position: relative;
   z-index: 1;
-  &::after {
-    position: absolute;
-    content: "";
-    z-index: -1;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    transform: scaleY(0);
-    transform-origin: bottom;
-    background: @danger-color;
-    transition: all 0.3s ease;
-    border-radius: inherit;
-  }
   &:hover {
-    &::after {
-      transform: scaleY(1);
-    }
     box-shadow: none;
     &:not(:disabled) {
       color: #fff;
     }
   }
+  .btnFillMixin(@danger-color);
 }
 
 .main {

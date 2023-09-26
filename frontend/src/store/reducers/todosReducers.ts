@@ -23,7 +23,21 @@ const todoReducers = {
     return state.map(({ complete, name, description }) => ({
       complete: name === payload.name ? !complete : complete,
       name,
-      description
+      description,
+    }));
+  },
+  correctTask(
+    state: stateTodosT,
+    { payload }: actionWithPayloadI<Omit<taskI, "complete"> & { index: number }>
+  ) {
+    return state.map(({ complete, name, description }, index) => ({
+      complete,
+      name:
+        index === payload.index &&
+        state.every(({ name }) => name !== payload.name)
+          ? payload.name
+          : name,
+      description: index === payload.index ? payload.description : description,
     }));
   },
   clearAll() {

@@ -1,0 +1,144 @@
+@import (less) "../../layout/main/Main.module.less";
+
+.task {
+  display: flex;
+  align-self: baseline;
+  gap: 15px;
+  border-radius: 6px;
+  position: relative;
+  width: 90%;
+  max-width: 80%;
+  align-items: center;
+  padding: 0px 40px;
+  button {
+    &.deleteBtn:extend(.clearBtn all) {
+      height: 40px;
+      flex-basis: content;
+    }
+    &.correctBtn:extend(.clearBtn all) {
+      img {
+        height: 80%;
+        width: 80%;
+        transform: rotate(10deg);
+      }
+      height: 40px;
+      flex-basis: content;
+      .btnFillMixin(#dfbb46);
+    }
+    img {
+      transition: filter 0.4s ease-out;
+    }
+    &:hover {
+      img {
+        filter: invert(100%);
+      }
+    }
+  }
+  transition: background 0.5s ease;
+  &:is(:hover, :focus) {
+    background: #e9e9e9da;
+  }
+}
+
+.taskInner {
+  color: #000;
+  max-width: 60%;
+  display: flex;
+  flex-direction: column;
+  &:has(h1, p) h1,
+  p {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    word-wrap: unset;
+    &:is(h1) {
+      font-size: 1.25rem;
+      letter-spacing: 0.2px;
+    }
+    &:is(p) {
+      color: #8f8f8f;
+      font-weight: 300;
+      letter-spacing: 1.25px;
+      opacity: 0.7;
+      text-shadow: 1px 1px #ddddddad;
+    }
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  &:has(input) {
+    input, area {
+      position: relative;
+      padding: 5px 0;
+      color: #303030;
+      font-size: 1rem;
+      font-family: "Noto Sans Sogdian", sans-serif;
+      background-color: #00000000;
+      letter-spacing: 0.05rem;
+      &::placeholder {
+        color: #a8a8a8;
+        font-size: 1.25rem;
+      }
+    }
+    &:invalid ~ span {
+      background-color: #ddddddad;
+    }
+    
+  }
+  &.visibleAll {
+    &:has(h1, p) h1,
+    p {
+      overflow: visible;
+      word-wrap: break-word;
+      white-space: unset;
+      text-overflow: unset;
+    }
+  }
+}
+
+.completeTask {
+  position: relative;
+  height: 30px;
+  min-width: 30px;
+  max-width: 30px;
+  & > * {
+    height: 80%;
+    width: 80%;
+  }
+  input {
+    opacity: 0;
+    z-index: 1;
+    position: absolute;
+    &:checked ~ label {
+      img {
+        opacity: 1;
+        transform: rotate(0deg) scale(100%);
+      }
+      background: @purple-color;
+      border-color: transparent;
+    }
+    &:not(:checked):hover ~ label {
+      border-color: @purple-color;
+    }
+    cursor: pointer;
+  }
+  label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 0;
+    border: 1px solid #797979;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    img {
+      width: 80%;
+      height: 80%;
+      pointer-events: none;
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: rotate(180deg) scale(50%);
+      filter: invert(100%);
+    }
+  }
+}
