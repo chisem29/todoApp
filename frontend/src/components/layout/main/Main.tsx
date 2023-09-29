@@ -26,10 +26,11 @@ const Main: FC<PropsWithChildren> = ({ children }) => {
   return (
     <main className={styles.main}>
       {children}
-      <div className={styles.controlTodos}>
+      <form className={styles.controlTodos}>
         <FormGroup className={styles.groupControl}>
           <input
             required
+            maxLength={16}
             id="name"
             placeholder="Enter  task name"
             type="text"
@@ -42,6 +43,7 @@ const Main: FC<PropsWithChildren> = ({ children }) => {
         <FormGroup className={styles.groupControl}>
           <textarea
             required
+            maxLength={256}
             id="desciption"
             placeholder="Description"
             onChange={(e) => {
@@ -52,7 +54,6 @@ const Main: FC<PropsWithChildren> = ({ children }) => {
         </FormGroup>
         <div className={styles.btnGroup}>
           <button
-            type="submit"
             className={styles.addBtn}
             disabled={!(fieldValue && fieldValue2)}
             onClick={handlerAdd}
@@ -67,7 +68,7 @@ const Main: FC<PropsWithChildren> = ({ children }) => {
             Clear All
           </button>
         </div>
-      </div>
+      </form>
     </main>
   );
 };

@@ -1,10 +1,12 @@
 import { FC } from "react";
 
 import styles from "./Todolist.module.less";
+
 import useTodosSelector from "../../../hooks/useTodosSelector";
 import useVisibleInner from "../../../hooks/useVisibleInner";
-import Todo from "../Todo/Todo";
 import useOnCorrectTodo from "../../../hooks/useOnCorrectTodo";
+
+import Todo from "../Todo/Todo";
 
 const TodoList: FC = () => {
   const state = useTodosSelector();

@@ -1,4 +1,5 @@
 @import (less) "../../layout/main/Main.module.less";
+@import (less) "../../../index.less";
 
 .task {
   display: flex;
@@ -23,7 +24,7 @@
       }
       height: 40px;
       flex-basis: content;
-      .btnFillMixin(#dfbb46);
+      .btnFillMixin(@purple-color);
     }
     img {
       transition: filter 0.4s ease-out;
@@ -38,7 +39,11 @@
   &:is(:hover, :focus) {
     background: #e9e9e9da;
   }
+  &:is(.selectCorrect) {
+    animation: correctFocus 0.75s 0s ease-in-out infinite alternate
+  }
 }
+
 
 .taskInner {
   color: #000;
@@ -140,5 +145,14 @@
       transform: rotate(180deg) scale(50%);
       filter: invert(100%);
     }
+  }
+}
+
+@keyframes correctFocus {
+  from {
+    box-shadow: none
+  }
+  to {
+    box-shadow: 0 0 10px 5px fade(@purple-color, 40%)
   }
 }

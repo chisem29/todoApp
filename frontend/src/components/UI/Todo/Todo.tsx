@@ -35,7 +35,9 @@ const Todo: FC<todoFCI> = ({
       className={
         styles.task +
         " " +
-        (index === indexVisible ? styles.visibleItemAll : "")
+        (index === indexVisible ? styles.visibleItemAll : "") +
+        " " +
+        (indexCorrect !== index ? "" : styles.selectCorrect)
       }
       key={index}
     >
